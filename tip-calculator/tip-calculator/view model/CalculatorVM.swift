@@ -18,7 +18,13 @@ class CalculatorVM {
         let updateViewPublisher: AnyPublisher<Result, Never>
     }
     
+    private var cancellables = Set<AnyCancellable>()
+    
     func transform(input: Input) -> Output {
+        
+        input.billPublisher.sink { bill in
+            print("the bill: \(bill)")
+        }.store(in: &cancellables)
         
         let result = Result(
             amountPerPerson: 500,
