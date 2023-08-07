@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Combine
+import CombineCocoa
 
 class TipInputView: UIView {
 
@@ -15,17 +17,30 @@ class TipInputView: UIView {
         view.configure(topText: "Choose", bottomText: "your tip")
         return view
     }()
+    private var cancellables = Set<AnyCancellable>()
     
     private lazy var tenPercentTipButton: UIButton = {
-        return buildTipButton(tip: .tenPercent)
+        let btn = buildTipButton(tip: .tenPercent)
+        btn.tapPublisher.flatMap({
+            Just(Tip.tenPercent)
+        }).assign(to: \.value, on: tipSubject).store(in: &cancellables)
+        return btn
     }()
     
     private lazy var fifPercentTipButton: UIButton = {
-        return buildTipButton(tip: .fiftenPercent)
+        let btn = buildTipButton(tip: .fiftenPercent)
+        btn.tapPublisher.flatMap({
+            Just(Tip.fiftenPercent)
+        }).assign(to: \.value, on: tipSubject).store(in: &cancellables)
+        return btn
     }()
     
     private lazy var twenPercentTipButton: UIButton = {
-        return buildTipButton(tip: .twentyPercent)
+        let btn = buildTipButton(tip: .twentyPercent)
+        btn.tapPublisher.flatMap({
+            Just(Tip.twentyPercent)
+        }).assign(to: \.value, on: tipSubject).store(in: &cancellables)
+        return btn
     }()
     
     private lazy var customTipButton: UIButton = {
@@ -59,6 +74,11 @@ class TipInputView: UIView {
         sw.distribution = .fillEqually
         return sw
     }()
+    
+    private let tipSubject = CurrentValueSubject<Tip, Never>(.none)
+    var valuePublisher: AnyPublisher<Tip, Never> {
+        return tipSubject.eraseToAnyPublisher()
+    }
     
     init() {
         super.init(frame: .zero)
