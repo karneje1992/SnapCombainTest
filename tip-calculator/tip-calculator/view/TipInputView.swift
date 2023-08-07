@@ -49,6 +49,9 @@ class TipInputView: UIView {
         btn.titleLabel?.font = ThemeFont.bold(ofSize: 20)
         btn.backgroundColor = ThemeColor.primary
         btn.addCornerRadius(radius: 8.0)
+        btn.tapPublisher.sink { [weak self] in
+            self?.handelCustomTipButton()
+        }.store(in: &cancellables)
         return btn
     }()
     
@@ -101,6 +104,35 @@ class TipInputView: UIView {
             make.width.equalTo(68)
             make.centerY.equalTo(buttonHStackView.snp.centerY)
         }
+    }
+    
+    private func handelCustomTipButton() {
+        let alertController: UIAlertController = {
+            let ac = UIAlertController(
+                title: "Enter custom tip",
+                message: nil,
+                preferredStyle: .alert)
+            ac.addTextField{ textField in
+                textField.placeholder = "Make it generous!"
+                textField.keyboardType = .numberPad
+                textField.autocorrectionType = .no
+            }
+            let cancelAction = UIAlertAction(
+                title: "Cancel",
+                style: .cancel)
+            let okAction = UIAlertAction(
+                title: "OK",
+                style: .default) { [weak self] _ in
+                    guard let text = ac.textFields?.first?.text,
+                    let value = Int(text)
+                    else { return }
+                    self?.tipSubject.send(.custom(value: value))
+                }
+            [okAction, cancelAction].forEach(ac.addAction(_:))
+            return ac
+        }()
+        
+        parentViewController?.present(alertController, animated: true)
     }
 
     private func buildTipButton(tip: Tip) -> UIButton {

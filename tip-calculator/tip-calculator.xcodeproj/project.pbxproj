@@ -32,6 +32,7 @@
 		0A8F16452A7957A3001EBC09 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F16442A7957A3001EBC09 /* Result.swift */; };
 		0A8F16472A795EA4001EBC09 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F16462A795EA4001EBC09 /* Double+Extension.swift */; };
 		0A8F16492A795EBD001EBC09 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F16482A795EBD001EBC09 /* String+Extension.swift */; };
+		0A8F164B2A813122001EBC09 /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F164A2A813122001EBC09 /* UIResponder+Extension.swift */; };
 		0A8FA4502A79339700A9D27F /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8FA44F2A79339700A9D27F /* Tip.swift */; };
 		0A8FA4522A7933FA00A9D27F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8FA4512A7933FA00A9D27F /* HeaderView.swift */; };
 		0ACF38EE2A696FDA0086BDC8 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACF38ED2A696FDA0086BDC8 /* LabelFactory.swift */; };
@@ -81,6 +82,7 @@
 		0A8F16442A7957A3001EBC09 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		0A8F16462A795EA4001EBC09 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		0A8F16482A795EBD001EBC09 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		0A8F164A2A813122001EBC09 /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
 		0A8FA44F2A79339700A9D27F /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		0A8FA4512A7933FA00A9D27F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		0ACF38ED2A696FDA0086BDC8 /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				0A66328E2A5D79C500F1919B /* UIColor+Extension.swift */,
 				0ACF38EF2A6E765E0086BDC8 /* UIView+Extension.swift */,
+				0A8F164A2A813122001EBC09 /* UIResponder+Extension.swift */,
 				0A8F16462A795EA4001EBC09 /* Double+Extension.swift */,
 				0A8F16482A795EBD001EBC09 /* String+Extension.swift */,
 			);
@@ -395,6 +398,7 @@
 				0A6632812A5D72C700F1919B /* ResaltView.swift in Sources */,
 				0A66328A2A5D792600F1919B /* ThemeColor.swift in Sources */,
 				0A66328F2A5D79C500F1919B /* UIColor+Extension.swift in Sources */,
+				0A8F164B2A813122001EBC09 /* UIResponder+Extension.swift in Sources */,
 				0A8F16492A795EBD001EBC09 /* String+Extension.swift in Sources */,
 				0A6632832A5D72D600F1919B /* BillInputView.swift in Sources */,
 				0A66327F2A5D72B000F1919B /* LogoView.swift in Sources */,
