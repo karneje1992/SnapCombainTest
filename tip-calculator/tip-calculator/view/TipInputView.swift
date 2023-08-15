@@ -197,3 +197,9 @@ class TipInputView: UIView {
         return btn
     }
 }
+
+extension TipInputView: UIViewMainProtocol {
+    func reset() {
+        tipSubject.send(.none)
+    }
+}

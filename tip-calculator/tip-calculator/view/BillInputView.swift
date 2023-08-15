@@ -122,3 +122,9 @@ class BillInputView: UIView {
     }
 }
 
+extension BillInputView: UIViewMainProtocol{
+    func reset() {
+        textField.text = nil
+        billSubjects.send(0)
+    }
+}

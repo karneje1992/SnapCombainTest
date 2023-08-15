@@ -51,8 +51,8 @@ class CalculatorVC: UIViewController {
             target: self,
             action: nil
         )
-        tapGesture.numberOfTapsRequired = 1
-        view.addGestureRecognizer(tapGesture)
+        tapGesture.numberOfTapsRequired = 2
+        logoView.addGestureRecognizer(tapGesture)
         return tapGesture.tapPublisher.flatMap { _ in
             Just(())
         }.eraseToAnyPublisher()
@@ -78,13 +78,19 @@ class CalculatorVC: UIViewController {
         let input = CalculatorVM.Input(
             billPublisher: billInputView.valuePublisher,
             tipPublisher: tipInputView.valuePublisher,
-            splitPublisher: splitInputView.valuePublisher)
+            splitPublisher: splitInputView.valuePublisher,
+            logoViewTapPublisher: logoTapPublisher)
         
         let output = vm.transform(input: input)
+        
         output.updateViewPublisher.sink {[unowned self] result in
-            self.resultView.configure(result: result)
+            resultView.configure(result: result)
         }.store(in: &cancellables)
 
+        output.resetCalculatorPublisher.sink {[unowned self] _ in
+            let views:[UIViewMainProtocol] = [billInputView, tipInputView, splitInputView]
+            views.forEach({$0.reset()})
+        }.store(in: &cancellables)
     }
 
     private func layout() {

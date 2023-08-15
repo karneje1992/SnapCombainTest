@@ -30,3 +30,7 @@ extension UIView {
         layer.maskedCorners = [corners]
     }
 }
+
+protocol UIViewMainProtocol {
+    func reset()
+}

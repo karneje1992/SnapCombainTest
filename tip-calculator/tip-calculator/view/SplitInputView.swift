@@ -107,3 +107,9 @@ class SplitInputView: UIView {
         return btn
     }
 }
+
+extension SplitInputView: UIViewMainProtocol {
+    func reset() {
+        splitSubject.send(1)
+    }
+}
