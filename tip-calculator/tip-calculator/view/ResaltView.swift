@@ -79,14 +79,14 @@ class ResaltView: UIView {
     
     func configure(result: Result) {
         let text = NSMutableAttributedString(
-            string: String(result.amountPerPerson),
+            string: result.amountPerPerson.currencyFormatted,
             attributes: [.font: ThemeFont.bold(ofSize: 48)]
         )
         text.addAttributes([.font: ThemeFont.bold(ofSize: 24)],
                            range: NSMakeRange(0, 1))
         amountPerPersonLabel.attributedText = text
-        totalBillView.configure(text: String(result.totalBill))
-        totalBillView.configure(text: String(result.totalTip))
+        totalBillView.configure(amount: result.totalBill)
+        totalTipView.configure(amount: result.totalTip)
     }
     
     private func layout() {

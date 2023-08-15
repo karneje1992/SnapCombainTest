@@ -12,3 +12,13 @@ extension Int {
         return "\(self)"
     }
 }
+
+extension Double {
+    var currencyFormatted: String {
+        let isWholeNumber = isZero ? true : (!isNormal ? false : (self == rounded()))
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = isWholeNumber ? 0 : 2
+        let str = formatter.string(for: self) ?? ""
+        return "$\(str)"
+    }
+}
